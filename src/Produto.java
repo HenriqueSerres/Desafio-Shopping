@@ -32,13 +32,12 @@ public class Produto {
     public void setDataDeValidade(Data dataDeValidade) {
         this.dataDeValidade = dataDeValidade;
     }
-    public boolean estaVencido(Data vencimento) {
-        if (vencimento.getAno() > dataDeValidade.getAno()) {
-            System.out.println(vencimento.getAno()+" "+dataDeValidade.getAno());
+    public boolean estaVencido(Data finalDate) {
+        if (finalDate.getAno() > dataDeValidade.getAno()) {
             return false;
-        } else if (vencimento.getMes() > dataDeValidade.getMes()) {
+        } else if (finalDate.getMes() > dataDeValidade.getMes()) {
             return  false;
-        } else if (vencimento.getDia() > dataDeValidade.getDia()) {
+        } else if (finalDate.getDia() > dataDeValidade.getDia()) {
             return false;
         } else {
             return true;
@@ -53,7 +52,8 @@ public class Produto {
                 ", dataDeValidade=" + dataDeValidade +
                 '}';
     }
-    public static void criaProduto() {
+
+    public static void criaProduto(Data finalDate) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Qual o nome do produto: ");
         String name = sc.next();
@@ -66,8 +66,7 @@ public class Produto {
         System.out.println("Ano de vencimento: ");
         int ano = sc.nextInt();
         Data date = new Data(dia, mes, ano);
-        Data vencimento = new Data(20,10,2023);
         Produto product = new Produto(name,price,date);
-        System.out.println(product.estaVencido(vencimento) ? "PRODUTO VENCIDO" : "PRODUTO NÃO VENCIDO");
+        System.out.println(product.estaVencido(finalDate) ? "PRODUTO VENCIDO" : "PRODUTO NÃO VENCIDO");
     }
 }
