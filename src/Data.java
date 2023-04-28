@@ -6,15 +6,13 @@ public class Data {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
-        verifyDate();
+        dateIsValid();
     }
-    private void verifyDate() {
-        if (!dateIsValid()) {
-            System.out.println("Data inválida!!");
-            dia = 1;
-            mes = 1;
-            ano = 2000;
-        }
+    private void setDefaultDate() {
+        System.out.println("Data inválida!!");
+        dia = 1;
+        mes = 1;
+        ano = 2000;
     }
     public boolean dateIsValid() {
         if (verificaAnoBissexto() && mes == 2 && dia <= 29) {
@@ -27,6 +25,7 @@ public class Data {
         } else if (verificaMes31() && dia >= 1 && dia <= 31) {
             return true;
         }
+        setDefaultDate();
         return false;
     }
 
@@ -74,7 +73,7 @@ public class Data {
         return areHere;
     }
     public boolean verificaMes31() {
-        int[] meses = {1,3,5,7,8,11};
+        int[] meses = {1,3,5,7,8,10,12};
         boolean areHere = false;
         for (int i = 0; i < meses.length; i++) {
             if (meses[i] == mes) {

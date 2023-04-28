@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public class Produto {
+    private final static Data FINAL_DATE = new Data(20,10,2023);
     private String nome;
     private double preco;
     private Data dataDeValidade;
@@ -32,12 +33,12 @@ public class Produto {
     public void setDataDeValidade(Data dataDeValidade) {
         this.dataDeValidade = dataDeValidade;
     }
-    public boolean estaVencido(Data finalDate) {
-        if (finalDate.getAno() > dataDeValidade.getAno()) {
+    public boolean estaVencido(Data vence) {
+        if (vence.getAno() > dataDeValidade.getAno()) {
             return false;
-        } else if (finalDate.getMes() > dataDeValidade.getMes()) {
+        } else if (vence.getMes() > dataDeValidade.getMes()) {
             return  false;
-        } else if (finalDate.getDia() > dataDeValidade.getDia()) {
+        } else if (vence.getDia() > dataDeValidade.getDia()) {
             return false;
         } else {
             return true;
@@ -53,7 +54,7 @@ public class Produto {
                 '}';
     }
 
-    public static void criaProduto(Data finalDate) {
+    public static void criaProduto() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Qual o nome do produto: ");
         String name = sc.next();
@@ -67,6 +68,6 @@ public class Produto {
         int ano = sc.nextInt();
         Data date = new Data(dia, mes, ano);
         Produto product = new Produto(name,price,date);
-        System.out.println(product.estaVencido(finalDate) ? "PRODUTO VENCIDO" : "PRODUTO NÃO VENCIDO");
+        System.out.println(product.estaVencido(FINAL_DATE) ? "PRODUTO VENCIDO" : "PRODUTO NÃO VENCIDO");
     }
 }
