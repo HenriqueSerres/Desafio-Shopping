@@ -18,5 +18,6 @@ public class Principal {
             option = sc.nextByte();
         }
         sc.close();
+
     }
 }

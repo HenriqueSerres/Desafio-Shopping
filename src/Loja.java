@@ -5,19 +5,19 @@ public class Loja {
     private int quantidadeFuncionarios;
     private double salarioBaseFuncionario;
     private Endereco endereco;
-    private Data dataDeFundacao;
-    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataDeFundacao) {
+    private Data dataFundacao;
+    public Loja(String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.salarioBaseFuncionario = salarioBaseFuncionario;
         this.endereco = endereco;
-        this.dataDeFundacao = dataDeFundacao;
+        this.dataFundacao = dataFundacao;
     }
-    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataDeFundacao) {
+    public Loja(String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao) {
         this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         this.endereco = endereco;
-        this.dataDeFundacao = dataDeFundacao;
+        this.dataFundacao = dataFundacao;
         salarioBaseFuncionario = -1;
     }
 
@@ -33,8 +33,8 @@ public class Loja {
         return salarioBaseFuncionario;
     }
 
-    public Data getDataDeFundacao() {
-        return dataDeFundacao;
+    public Data getDataFundacao() {
+        return dataFundacao;
     }
 
     public Endereco getEndereco() {
@@ -52,8 +52,8 @@ public class Loja {
         this.salarioBaseFuncionario = salarioBaseFuncionario;
     }
 
-    public void setDataDeFundacao(Data dataDeFundacao) {
-        this.dataDeFundacao = dataDeFundacao;
+    public void setDataFundacao(Data dataFundacao) {
+        this.dataFundacao = dataFundacao;
     }
 
     public void setEndereco(Endereco endereco) {
@@ -63,7 +63,7 @@ public class Loja {
     public String toString() {
         return "Nome da loja: "+getNome()+
                 ".\nPossui "+getQuantidadeFuncionarios()+" funcionários.\nCom base salarial de R$ "+getSalarioBaseFuncionario()+
-                "\nEndereço: "+getEndereco()+"\nFundada em "+getDataDeFundacao();
+                "\nEndereço: "+getEndereco()+"\nFundada em "+ getDataFundacao();
     }
     public double gastosComSalario() {
         if (salarioBaseFuncionario == -1) return -1;
